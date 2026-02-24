@@ -1,5 +1,9 @@
 import os
 import sys
+
+# Apply Django 1.11 Python 3.8+ compatibility patch
+import django_patch
+
 from django.core.wsgi import get_wsgi_application
 from whitenoise.django import DjangoWhiteNoise
 
