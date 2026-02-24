@@ -3,17 +3,20 @@ import os
 import djcelery
 from datetime import timedelta
 from celery.schedules import crontab
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y409=qwy(=u^%7t$aa)j=83^f!-oqyy2omq%pj1+koeh2aryvd'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'y409=qwy(=u^%7t$aa)j=83^f!-oqyy2omq%pj1+koeh2aryvd')
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 
-ALLOWED_HOSTS = ['localhost', '*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
+if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
+    ALLOWED_HOSTS.append(os.environ.get('RENDER_EXTERNAL_HOSTNAME'))
 
 PHOTO_PATH = 'static/images/users'
 SIGNATURE_PATH = 'static/images/signatures'
@@ -38,6 +41,8 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,7 +74,23 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (BASE_DIR + '/static',)
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MEDIA_ROOT = BASE_DIR
+
+# Database configuration
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
+# WhiteNoise for static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 STATICFILES_FINDERS = (
