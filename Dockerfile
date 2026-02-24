@@ -14,6 +14,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip==21.3.1 && \
     pip install --no-cache-dir -r requirements.txt
 
+# Patch Django 1.11 for Python 3.8 compatibility
+RUN sed -i "s/'%s=%s' % (k, v) for k, v in params.items(),/('%s=%s' % (k, v) for k, v in params.items()),/" \
+    /usr/local/lib/python3.8/site-packages/django/contrib/admin/widgets.py
+
 # Copy application code
 COPY . .
 
