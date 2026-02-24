@@ -27,8 +27,5 @@ RUN chmod +x init_db.sh
 # Collect static files
 RUN python manage_local.py collectstatic --no-input || true
 
-# Initialize database during build
-RUN ./init_db.sh || echo "Database init will run at startup"
-
-# Start server
-CMD gunicorn microfinance.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120 --preload
+# Start server with migrations
+CMD ./init_db.sh && gunicorn microfinance.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120
