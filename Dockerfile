@@ -21,13 +21,11 @@ RUN sed -i "s/'%s=%s' % (k, v) for k, v in params.items(),/('%s=%s' % (k, v) for
 # Copy application code
 COPY . .
 
-# Make scripts executable
-RUN chmod +x init_db.sh
+# Make entrypoint executable
+RUN chmod +x entrypoint.sh
 
 # Collect static files
 RUN python manage_local.py collectstatic --no-input || true
 
-# Start server with inline migrations
-CMD python manage_local.py migrate --noinput && \
-    python manage_local.py create_default_superuser && \
-    gunicorn microfinance.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120
+# Use entrypoint script
+ENTRYPOINT ["./entrypoint.sh"]
