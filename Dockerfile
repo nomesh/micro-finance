@@ -21,14 +21,14 @@ RUN sed -i "s/'%s=%s' % (k, v) for k, v in params.items(),/('%s=%s' % (k, v) for
 # Copy application code
 COPY . .
 
+# Make scripts executable
+RUN chmod +x init_db.sh
+
 # Collect static files
 RUN python manage_local.py collectstatic --no-input || true
 
-# Run migrations and start server
-CMD set -e && \
-    echo "Running migrations..." && \
-    python manage_local.py migrate --noinput && \
-    echo "Creating superuser..." && \
-    python manage_local.py create_default_superuser && \
-    echo "Starting server..." && \
-    gunicorn microfinance.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120
+# Initialize database during build
+RUN ./init_db.sh || echo "Database init will run at startup"
+
+# Start server
+CMD gunicorn microfinance.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120 --preload
