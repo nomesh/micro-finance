@@ -2,9 +2,11 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django_blog_it import urls as django_blog_it_urls
+from micro_admin.migrate_view import run_migrations
 
 
 urlpatterns = [
+    url(r'^run-migrations/$', run_migrations, name='run_migrations'),
     url(r'^', include('micro_admin.urls', namespace='micro_admin')),
     url(r'^dashboard/', include('savings.urls', namespace='savings')),
     url(r'^dashboard/', include('loans.urls', namespace='loans')),
