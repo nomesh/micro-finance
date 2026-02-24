@@ -1,1 +1,1 @@
-web: sh -c 'gunicorn microfinance.wsgi && pip install -r requirements.txt'
+web: python manage_local.py migrate --noinput && python manage_local.py create_default_superuser && gunicorn microfinance.wsgi:application --bind 0.0.0.0:$PORT
