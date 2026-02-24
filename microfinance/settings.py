@@ -14,9 +14,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'y409=qwy(=u^%7t$aa)j=83^f!-oqyy2omq%p
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.railway.app']
 if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
     ALLOWED_HOSTS.append(os.environ.get('RENDER_EXTERNAL_HOSTNAME'))
+if os.environ.get('RAILWAY_PUBLIC_DOMAIN'):
+    ALLOWED_HOSTS.append(os.environ.get('RAILWAY_PUBLIC_DOMAIN'))
 
 PHOTO_PATH = 'static/images/users'
 SIGNATURE_PATH = 'static/images/signatures'
