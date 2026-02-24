@@ -28,4 +28,4 @@ RUN chmod +x init_db.sh
 RUN python manage_local.py collectstatic --no-input || true
 
 # Start server with migrations
-CMD ./init_db.sh && gunicorn microfinance.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120
+CMD bash -c "./init_db.sh && gunicorn microfinance.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120"
