@@ -1,22 +1,24 @@
-databases:
-  - name: microfinance-db
-    databaseName: microfinance
-    user: microfinance
-
 services:
   - type: web
     name: microfinance-app
     runtime: python
-    buildCommand: "pip install -r requirements.txt && python manage_local.py migrate && python manage_local.py collectstatic --noinput"
+    plan: free
+    buildCommand: "pip install --upgrade pip==21.3.1 && pip install -r requirements.txt && python manage_local.py collectstatic --no-input && python manage_local.py migrate"
     startCommand: "gunicorn microfinance.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.7.17
-      - key: DATABASE_URL
-        fromDatabase:
-          name: microfinance-db
-          property: connectionString
+        value: "3.7.16"
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
         value: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: microfinance-db
+          property: connectionString
+
+databases:
+  - name: microfinance-db
+    databaseName: microfinance
+    user: microfinance
+    plan: free
