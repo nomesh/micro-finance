@@ -29,7 +29,7 @@
           <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Member Name :</label><span class="col-lg-6 mar-top">{{ recurring_deposit.client.first_name|capfirst }}</span>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Deposited Amount:</label><span class="col-lg-6 mar-top">{{ recurring_deposit.recurring_deposit_amount }}</span>
+          <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Deposited Amount:</label><span class="col-lg-6 mar-top">{{ recurring_deposit.recurring_deposit_amount|floatformat:2 }}</span>
         </div>
         <div class="form-group">
           <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Interest Rate :</label><span class="col-lg-6 mar-top">{{ recurring_deposit.recurring_deposit_interest_rate }} %</span>
@@ -74,7 +74,7 @@
         </div>
         <div class="form-group">
           <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Total Maturity Amount:</label>
-          <span class="col-lg-5 mar-top" style="color:#FF00CC;">{{ recurring_deposit.maturity_amount }}</span>
+          <span class="col-lg-5 mar-top" style="color:#FF00CC;">{{ recurring_deposit.maturity_amount|floatformat:2 }}</span>
         </div>
         <div class="form-group">
           <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">&nbsp;</label>

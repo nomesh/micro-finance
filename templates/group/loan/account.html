@@ -152,7 +152,7 @@
                 <td>{{ group_member.loan_amount }}</td>
                 <td>{{ group_member.total_loan_amount_repaid }}</td>
                 <td>{{ group_member.total_interest_repaid }}</td>
-                <td>{{ group_member.total_loan_balance }}</td>
+                <td>{{ group_member.total_loan_balance|floatformat:2 }}</td>
                 </tr>
               {% endfor %}
             </tbody>
