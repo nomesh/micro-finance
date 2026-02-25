@@ -36,6 +36,7 @@ def client_savings_application_view(request, client_id):
 
 
 @login_required
+@login_required
 def client_savings_account_view(request, client_id):
     client = get_object_or_404(Client, id=client_id)
     account_object = get_object_or_404(SavingsAccount, client=client)
