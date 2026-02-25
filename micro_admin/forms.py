@@ -247,6 +247,17 @@ class SavingsAccountForm(forms.ModelForm):
 
 
 class LoanAccountForm(forms.ModelForm):
+    loan_repayment_every = forms.ChoiceField(
+        choices=[],
+        widget=forms.Select(attrs={'class': 'text-box wid-form'})
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(LoanAccountForm, self).__init__(*args, **kwargs)
+        # Populate choices from LoanRepaymentEvery model
+        from micro_admin.models import LoanRepaymentEvery
+        repayment_values = LoanRepaymentEvery.objects.all().values_list('value', 'value')
+        self.fields['loan_repayment_every'].choices = [('', 'Please Select Option')] + list(repayment_values)
 
     class Meta:
         model = LoanAccount
