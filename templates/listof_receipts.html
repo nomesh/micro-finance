@@ -101,7 +101,7 @@
                 {% if receipt.insurance_amount%}{{ receipt.insurance_amount|floatformat:2 }}{% else %}-{% endif %}
               </td>
               <td>
-                <a href="{% url 'micro_admin:userprofile' receipt.staff.id %}" style="color:#337ab7;">{{ receipt.staff|capfirst|default:" - " }}</a></td>
+                {% if receipt.staff and receipt.staff.id %}<a href="{% url 'micro_admin:userprofile' receipt.staff.id %}" style="color:#337ab7;">{{ receipt.staff|capfirst }}</a>{% else %}{{ receipt.staff|capfirst|default:" - " }}{% endif %}</td>
             </tr>
             {% endfor %}
           </tbody>

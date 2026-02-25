@@ -58,8 +58,7 @@
         <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Loan A/C Number :</label><span class="col-lg-6 mar-top">{{ loan_account.account_no }}</span>
       </div>
       <div class="form-group">
-        <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Applied By Staff :</label><span class="col-lg-6 mar-top"><a href="{% url 'micro_admin:userprofile' loan_account.created_by.id %}">{{ loan_account.created_by|capfirst }}
-        </a></span>
+        <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Applied By Staff :</label><span class="col-lg-6 mar-top">{% if loan_account.created_by and loan_account.created_by.id %}<a href="{% url 'micro_admin:userprofile' loan_account.created_by.id %}">{{ loan_account.created_by|capfirst }}</a>{% else %}{{ loan_account.created_by|capfirst|default:"N/A" }}{% endif %}</span>
       </div>
       <div class="form-group">
         <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Loan Issued By :</label><span class="col-lg-6 mar-top">{{ loan_account.loan_issued_by|capfirst }}</span>

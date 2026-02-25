@@ -56,7 +56,7 @@
             </td>
             <td>
             {% if payment.staff %}
-              <a href="{% url 'micro_admin:userprofile' payment.staff.id %}" style="color:#337ab7;">
+              {% if payment.staff and payment.staff.id %}<a href="{% url 'micro_admin:userprofile' payment.staff.id %}" style="color:#337ab7;">
             {% endif %}
             {{ payment.staff.username|capfirst|default:" - " }}
             {% if payment.staff %}</a>{% endif %}
