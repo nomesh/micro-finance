@@ -119,6 +119,9 @@
   <!--form div ends above-->
 </div>
 <!--wrapper ends above-->
+{% endblock %}
+{% block extra_js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $('.change-account-status').click(function(e) {
@@ -130,7 +133,6 @@
         }
         else {
           showSuccessMessage("Savings account status changed successfully!", window.location.href);
-          window.location = '.';
         }
       }, "json");
     });
