@@ -58,6 +58,9 @@
   <!--form div ends above-->
 </div>
 <!--content ends above-->
+{% endblock %}
+{% block extra_js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $('#clientsavingsapplicationform').submit(function(e) {
@@ -70,8 +73,8 @@
           });
         }
         else {
-          url = "{% url 'savings:clientsavingsaccount' 1 %}".replace(1, data.client_id)
-          window.location = url;
+          url = "{% url 'savings:clientsavingsaccount' 1 %}".replace(1, data.client_id);
+          showSuccessMessage("Savings Application submitted successfully!", url);
         }
       }, "json");
     });

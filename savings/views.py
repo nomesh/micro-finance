@@ -27,7 +27,7 @@ def client_savings_application_view(request, client_id):
             obj_sav_acc.created_by = request.user
             obj_sav_acc.client = client
             obj_sav_acc.save()
-            return HttpResponseRedirect(reverse("savings:clientsavingsaccount", kwargs={'client_id': client.id}))
+            return JsonResponse({"error": False, "client_id": client.id})
         else:
             return JsonResponse({"error": True, "errors": form.errors})
     else:
@@ -73,7 +73,7 @@ def group_savings_application_view(request, group_id):
             obj_sav_acc.created_by = request.user
             obj_sav_acc.group = group
             obj_sav_acc.save()
-            return HttpResponseRedirect(reverse("savings:groupsavingsaccount", kwargs={'group_id': group.id}))
+            return JsonResponse({"error": False, "success_url": reverse("savings:groupsavingsaccount", kwargs={'group_id': group.id})})
         else:
             return JsonResponse({"error": True, "errors": form.errors})
     else:
