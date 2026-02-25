@@ -18,7 +18,7 @@ def client_savings_application_view(request, client_id):
     client = get_object_or_404(Client, id=client_id)
     form = SavingsAccountForm()
     if SavingsAccount.objects.filter(client=client).exists():
-        return HttpResponseRedirect(reverse(request, "savings:clientsavingsaccount", kwargs={'client_id': client.id}))
+        return HttpResponseRedirect(reverse("savings:clientsavingsaccount", kwargs={'client_id': client.id}))
     if request.method == 'POST':
         form = SavingsAccountForm(request.POST, instance=client)
         if form.is_valid():
@@ -27,7 +27,7 @@ def client_savings_application_view(request, client_id):
             obj_sav_acc.created_by = request.user
             obj_sav_acc.client = client
             obj_sav_acc.save()
-            return HttpResponseRedirect(reverse(request, "savings:clientsavingsaccount", kwargs={'client_id': client.id}))
+            return HttpResponseRedirect(reverse("savings:clientsavingsaccount", kwargs={'client_id': client.id}))
         else:
             return JsonResponse({"error": True, "errors": form.errors})
     else:
