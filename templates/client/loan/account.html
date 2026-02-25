@@ -76,22 +76,22 @@
           <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Loan Issued By :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.loan_issued_by|capfirst }}</span>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Loan Amount :</label><span class="col-lg-6 mar-top" style="color:#FF00CC;">{{ loanaccount.loan_amount }}/-</span>
+          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Loan Amount :</label><span class="col-lg-6 mar-top" style="color:#FF00CC;">{{ loanaccount.loan_amount|floatformat:2 }}/-</span>
         </div>
         <div class="form-group">
           <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Loan Repayment Period :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.loan_repayment_period }} Months</span>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Principle Repayment Amount :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top" style="color:#337ab7;">{{ loanaccount.principle_repayment }}/-</span>
+          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Principle Repayment Amount :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top" style="color:#337ab7;">{{ loanaccount.principle_repayment|floatformat:2 }}/-</span>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Total Loan Repayment Amount :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.loan_repayment_amount }}/-</span>
+          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Total Loan Repayment Amount :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.loan_repayment_amount|floatformat:2 }}/-</span>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label"> Total Principle Repaid Amount  :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.total_loan_amount_repaid }}/-</span>
+          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label"> Total Principle Repaid Amount  :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.total_loan_amount_repaid|floatformat:2 }}/-</span>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label"> Total Loan Amount Paid :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.total_loan_paid }}/-</span>
+          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label"> Total Loan Amount Paid :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.total_loan_paid|floatformat:2 }}/-</span>
         </div>
       </div>
       <!--div 1 of fomr ends above-->
@@ -136,16 +136,16 @@
           <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Loan Repayment for Every :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.loan_repayment_every }} Month{{ loanaccount.loan_repayment_every|pluralize }}</span>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Interest Charged :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top" style="color:#337ab7;">{{ loanaccount.interest_charged }}/-</span>
+          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Interest Charged :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top" style="color:#337ab7;">{{ loanaccount.interest_charged|floatformat:2 }}/-</span>
         </div>
         <div class="form-group">
           <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">No. of Repayments Completed :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ no_of_repayments_completed }}</span>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label"> Total Interest Repaid :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.total_interest_repaid }}/-</span>
+          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label"> Total Interest Repaid :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.total_interest_repaid|floatformat:2 }}/-</span>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Total Principle Balance :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.total_loan_balance }}/-</span>
+          <label for="inputEmail3" class="col-lg-6 col-sm-6 col-xs-6 control-label">Total Principle Balance :</label><span class="col-lg-6 col-sm-6 col-xs-6 mar-top">{{ loanaccount.total_loan_balance|floatformat:2 }}/-</span>
         </div>
       </div>
       <br clear="all" />

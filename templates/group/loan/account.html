@@ -65,7 +65,7 @@
         <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Loan Issued By :</label><span class="col-lg-6 mar-top">{{ loan_account.loan_issued_by|capfirst }}</span>
       </div>
       <div class="form-group">
-        <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Loan Amount :</label><span class="col-lg-6 mar-top" style="color:#FF00CC;">{{ loan_account.loan_amount }}</span>
+        <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Loan Amount :</label><span class="col-lg-6 mar-top" style="color:#FF00CC;">{{ loan_account.loan_amount|floatformat:2 }}</span>
       </div>
       <div class="form-group">
         <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">Loan Period :</label><span class="col-lg-6 mar-top">{{ loan_account.loan_repayment_period }} Months</span>
@@ -116,7 +116,7 @@
         <label for="inputEmail3" class="col-lg-6 col-sm-6 control-label">
         Principle Balance Amount :
         </label>
-        <span class="col-lg-5 mar-top" style="color:#337ab7;">{{ loan_account.total_loan_balance }} </span>
+        <span class="col-lg-5 mar-top" style="color:#337ab7;">{{ loan_account.total_loan_balance|floatformat:2 }} </span>
       </div>
     </div>
     <br clear="all" />
