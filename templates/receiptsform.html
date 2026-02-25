@@ -212,7 +212,7 @@
         <!--btn row-->
         <div class="btns-row">
           <div class="form-group btns align-btns">
-            <button class="submit-btn" type="submit"><i class="fa fa-check padd"></i>Submit</button>
+            <button class="submit-btn" type="button" onclick="$('#createreceiptform').submit(); return false;"><i class="fa fa-check padd"></i>Submit</button>
             <button class="cancel-btn" type="reset"><i class="fa fa-times padd"></i>Cancel</button>
           </div>
         </div>
@@ -307,6 +307,7 @@
   $(document).ready(function() {
     $('#createreceiptform').submit(function(e) {
       e.preventDefault();
+      e.stopPropagation();
       $.post('{% url "micro_admin:receiptsdeposit" %}', $('#createreceiptform').serialize(), function(data) {
         if (data.error) {
           $("span.error").remove();
@@ -367,6 +368,11 @@
     });
     $('.cancel-btn').click(function(e){
       $("span.error").remove();
+    });
+    
+    // Ensure form doesn't submit normally
+    $('#createreceiptform').on('submit', function() {
+      return false;
     });
   });
 </script>
