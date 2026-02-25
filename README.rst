@@ -1,8 +1,8 @@
 micro-finance
 =============
-Full featured completely customizable software for Microfinanace Institutes
-This is MicroPyramid opensource initiative for microfinanace management.
-This is full featured software to manage microfinanace Institute(s).
+Full featured completely customizable software for Microfinance Institutes
+This is MicroPyramid opensource initiative for microfinance management.
+This is full featured software to manage microfinance Institute(s).
 
 .. image:: https://travis-ci.org/MicroPyramid/micro-finance.svg?branch=master
    :target: https://travis-ci.org/MicroPyramid/micro-finance
