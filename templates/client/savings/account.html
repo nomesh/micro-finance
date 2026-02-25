@@ -68,8 +68,12 @@
           <label for="inputEmail3" class="col-sm-6 col-xs-6 control-label">Applied By Staff</label>
           <div class="col-sm-6 col-xs-6">
             <label for="inputEmail3" class="control-label">
+            {% if savingsaccount.created_by and savingsaccount.created_by.id %}
             <a href="{% url 'micro_admin:userprofile' savingsaccount.created_by.id %}">
             {{ savingsaccount.created_by|capfirst }}</a>
+            {% else %}
+            {{ savingsaccount.created_by|capfirst|default:"N/A" }}
+            {% endif %}
             </label>
           </div>
         </div>
