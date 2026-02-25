@@ -11,7 +11,7 @@
   <div class="panel panel-default my-panel-2 margin-top-set">
     <div class="panel-heading">New Receipt</div>
     <div class="panel-body pb-pad">
-      <form id="createreceiptform" class="form-horizontal" role="form" method="post">
+      <form id="createreceiptform" class="form-horizontal" role="form" method="post" onsubmit="return false;">
         {% csrf_token %}
         <!--div 1 0f form-->
         <div class="box-form">
@@ -225,6 +225,10 @@
 <!--content ends above-->
 </div>
 <!--wrapper ends above-->
+{% endblock %}
+{% block extra_js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script type="text/javascript">
   function memberloanaccount() {
     $.post('{% url "micro_admin:getmemberloanaccounts" %}', $('#createreceiptform').serialize(), function(data) {
@@ -354,10 +358,10 @@
           if (data.message.insurance_amount) {
             $("#insuranceamounterror").prepend("<span class='error' style='height:11px;color:red;'>" + data.message.insurance_amount + "</span>");
           }
+          showErrorMessage("Please fix the errors in the form below.");
         }
         else {
-          showSuccessMessage("Receipt added successfully!", window.location.href);
-          window.location = '{% url "micro_admin:receiptslist" %}';
+          showSuccessMessage("Receipt added successfully!", '{% url "micro_admin:receiptslist" %}');
         }
       }, "json");
     });
