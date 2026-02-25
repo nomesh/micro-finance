@@ -385,21 +385,22 @@
       $.post("{% url 'core:payslip' %}", $('#paymentform').serialize(), function(data) {
         if (data.error) {
           $("span.error").remove();
-          if (data.message1) {
-            $("#message1error").prepend("<span class='error' style='height:11px;color:red;text-align:center;'>" + data.message1 + "</span>");
-          }
+          var hasFieldErrors = false;
           $.each(data.errors, function( key, value ) {
             if (key !== '__all__'){
+              hasFieldErrors = true;
               $('#'+key).after("<span class='error' style='height:11px;color:red;'> * " + value + "</span>");
             }
             else{
-              $("#message1error").prepend("<span class='error' style='height:11px;color:red;text-align:center;'>" + value + "</span>");
+              showErrorMessage(value);
             }
           });
+          if (hasFieldErrors) {
+            showErrorMessage("Please fix the errors in the form below.");
+          }
         }
         else {
-          showSuccessMessage("Payment completed successfully!", window.location.href);
-          window.location = "{% url 'micro_admin:paymentslist' %}";
+          showSuccessMessage("Payment completed successfully!", "{% url 'micro_admin:paymentslist' %}");
         }
       }, "json");
     });
