@@ -66,8 +66,12 @@
               type="button" id="dropdownMenu5" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button></span>
             <div class="dropdown-menu profile_logout">
-              {% if request.user.is_authenticated and request.user.pk %}
-              <a class="dropdown-item" href="{% url 'micro_admin:userprofile' request.user.pk %}">Profile</a>
+              {% if user.is_authenticated %}
+                {% with user_id=user.pk|default:user.id %}
+                  {% if user_id %}
+                    <a class="dropdown-item" href="{% url 'micro_admin:userprofile' user_id %}">Profile</a>
+                  {% endif %}
+                {% endwith %}
               {% endif %}
               <a class="dropdown-item" href="{% url 'micro_admin:userchangepassword'%}">Change Password</a>
               <a class="dropdown-item" href="{% url 'micro_admin:logout' %}">Logout</a>
