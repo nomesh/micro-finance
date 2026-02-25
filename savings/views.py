@@ -39,8 +39,8 @@ def client_savings_application_view(request, client_id):
 @login_required
 def client_savings_account_view(request, client_id):
     client = get_object_or_404(Client, id=client_id)
-    account_object = get_object_or_404(SavingsAccount, client=client)
-    return render(request, "client/savings/account.html", {'client': client, 'account_object': account_object})
+    savingsaccount = get_object_or_404(SavingsAccount, client=client)
+    return render(request, "client/savings/account.html", {'client': client, 'savingsaccount': savingsaccount})
 
 
 @login_required
