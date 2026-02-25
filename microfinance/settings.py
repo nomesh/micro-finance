@@ -20,6 +20,13 @@ if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
 if os.environ.get('RAILWAY_PUBLIC_DOMAIN'):
     ALLOWED_HOSTS.append(os.environ.get('RAILWAY_PUBLIC_DOMAIN'))
 
+# Site URL for email links
+SITE_URL = os.environ.get('SITE_URL', 'http://localhost:8000')
+if os.environ.get('RAILWAY_PUBLIC_DOMAIN'):
+    SITE_URL = f"https://{os.environ.get('RAILWAY_PUBLIC_DOMAIN')}"
+elif os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
+    SITE_URL = f"https://{os.environ.get('RENDER_EXTERNAL_HOSTNAME')}"
+
 PHOTO_PATH = 'static/images/users'
 SIGNATURE_PATH = 'static/images/signatures'
 
