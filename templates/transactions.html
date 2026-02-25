@@ -8,13 +8,13 @@
     <h3>Transactions</h3>
     <div class="select_banner row">
       <div class="col-5">
-        <button type="button" class="pull-right branch">Receipts</button>
+        <a href="{% url 'micro_admin:receiptslist' %}"><button type="button" class="pull-right branch">Receipts</button></a>
       </div>
       <div class="col">
         <span class="select_or">Or</span>
       </div>
       <div class="col-5">
-        <button type="button" class="pull-left branch">Payments</button>
+        <a href="{% url 'micro_admin:paymentslist' %}"><button type="button" class="pull-left branch">Payments</button></a>
       </div>
     </div>
   </div>
