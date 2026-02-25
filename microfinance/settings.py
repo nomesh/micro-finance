@@ -27,6 +27,9 @@ if os.environ.get('RAILWAY_PUBLIC_DOMAIN'):
 elif os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
     SITE_URL = f"https://{os.environ.get('RENDER_EXTERNAL_HOSTNAME')}"
 
+# Email settings
+FROM_EMAIL = os.environ.get('FROM_EMAIL', 'noreply@example.com')
+
 PHOTO_PATH = 'static/images/users'
 SIGNATURE_PATH = 'static/images/signatures'
 
