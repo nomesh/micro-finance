@@ -55,11 +55,12 @@
             {% if payment.client %}</a>{% endif %}
             </td>
             <td>
-            {% if payment.staff %}
-              {% if payment.staff and payment.staff.id %}<a href="{% url 'micro_admin:userprofile' payment.staff.id %}" style="color:#337ab7;">
+            {% if payment.staff and payment.staff.id %}
+              <a href="{% url 'micro_admin:userprofile' payment.staff.id %}" style="color:#337ab7;">
+              {{ payment.staff.username|capfirst }}</a>
+            {% else %}
+              {{ payment.staff.username|capfirst|default:" - " }}
             {% endif %}
-            {{ payment.staff.username|capfirst|default:" - " }}
-            {% if payment.staff %}</a>{% endif %}
             </td>
             <td>{{ payment.payment_type }}</td>
             <td>{{ payment.amount|floatformat:2 }}</td>
