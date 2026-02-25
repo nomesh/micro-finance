@@ -20,7 +20,7 @@ def client_savings_application_view(request, client_id):
     if SavingsAccount.objects.filter(client=client).exists():
         return HttpResponseRedirect(reverse("savings:clientsavingsaccount", kwargs={'client_id': client.id}))
     if request.method == 'POST':
-        form = SavingsAccountForm(request.POST, instance=client)
+        form = SavingsAccountForm(request.POST)
         if form.is_valid():
             obj_sav_acc = form.save(commit=False)
             obj_sav_acc.status = "Applied"
