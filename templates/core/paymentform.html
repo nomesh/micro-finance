@@ -385,6 +385,7 @@
 
     $('#paymentform').submit(function(e) {
       e.preventDefault();
+      e.stopPropagation();
       $.post("{% url 'core:payslip' %}", $('#paymentform').serialize(), function(data) {
         if (data.error) {
           $("span.error").remove();
@@ -409,6 +410,11 @@
     });
     $('.cancel-btn').click(function(e){
       $("span.error").remove();
+    });
+    
+    // Ensure form doesn't submit normally
+    $('#paymentform').on('submit', function() {
+      return false;
     });
   });
 
