@@ -256,6 +256,12 @@ class LoanAccountForm(forms.ModelForm):
         super(LoanAccountForm, self).__init__(*args, **kwargs)
         # Populate choices from LoanRepaymentEvery model
         from micro_admin.models import LoanRepaymentEvery
+        
+        # Ensure values exist - create if missing
+        if LoanRepaymentEvery.objects.count() == 0:
+            for i in range(1, 6):
+                LoanRepaymentEvery.objects.create(value=i)
+        
         repayment_values = LoanRepaymentEvery.objects.all().values_list('value', 'value')
         self.fields['loan_repayment_every'].choices = [('', 'Please Select Option')] + list(repayment_values)
 
