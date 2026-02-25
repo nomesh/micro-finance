@@ -11,7 +11,7 @@
   <div class="panel panel-default my-panel-2 margin-top-set">
     <div class="panel-heading">New Receipt</div>
     <div class="panel-body pb-pad">
-      <form id="createreceiptform" class="form-horizontal" role="form" method="post" onsubmit="return false;">
+      <form id="createreceiptform" class="form-horizontal" role="form" method="post">
         {% csrf_token %}
         <!--div 1 0f form-->
         <div class="box-form">
@@ -212,7 +212,7 @@
         <!--btn row-->
         <div class="btns-row">
           <div class="form-group btns align-btns">
-            <button class="submit-btn" type="button" onclick="$('#createreceiptform').submit(); return false;"><i class="fa fa-check padd"></i>Submit</button>
+            <button class="submit-btn" type="submit"><i class="fa fa-check padd"></i>Submit</button>
             <button class="cancel-btn" type="reset"><i class="fa fa-times padd"></i>Cancel</button>
           </div>
         </div>
