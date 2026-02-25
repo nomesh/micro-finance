@@ -192,8 +192,7 @@
           });
         }
         else {
-          alert("Member created sucessfully.");
-          window.location = data.success_url;
+          showSuccessMessage("Member created successfully!", data.success_url);
         }
       }, "json");
     });

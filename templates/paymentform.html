@@ -157,7 +157,7 @@
           });
         }
         else {
-          alert("Payment has been done sucessfully.");
+          showSuccessMessage("Payment completed successfully!", window.location.href);
           window.location = "{% url 'micro_admin:paymentslist' %}";
         }
       }, "json");

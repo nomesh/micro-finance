@@ -78,7 +78,7 @@
           });
         }
         else {
-          alert("Branch created successfully.");
+          showSuccessMessage("Branch created successfully!", "{% url 'micro_admin:viewbranch' %}");
           window.location = data.success_url;
         }
       }, "json");

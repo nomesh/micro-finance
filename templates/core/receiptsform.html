@@ -461,7 +461,7 @@
 
         }
         else {
-          alert("Receipt added sucessfully");
+          showSuccessMessage("Receipt added successfully!", window.location.href);
           window.location = "{% url 'micro_admin:receiptslist' %}";
         }
       }, "json");

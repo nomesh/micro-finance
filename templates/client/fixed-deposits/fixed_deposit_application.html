@@ -120,7 +120,7 @@
       $(".error").remove();
       if(data.error == false)
       {
-        alert("FD Application Submitted sucessfully.");
+        showSuccessMessage("Fixed Deposit Application submitted successfully!", url);
         window.location = data.success_url;
       }
       else

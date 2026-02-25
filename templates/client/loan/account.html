@@ -196,7 +196,7 @@
           alert(data.error_message);
         }
         else {
-          alert("Member Loan status changed successfully.")
+          showSuccessMessage("Loan status changed successfully!", window.location.href)
           window.location = '.';
         }
       }, "json");

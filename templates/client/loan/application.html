@@ -95,14 +95,8 @@
           });
         }
         else {
-          // Show success message
-          var successMsg = $('<div class="alert alert-success" style="position:fixed;top:20px;right:20px;z-index:9999;padding:15px 20px;background:#5cb85c;color:white;border-radius:4px;box-shadow:0 2px 5px rgba(0,0,0,0.2);"><i class="fa fa-check-circle" style="margin-right:10px;"></i>Loan Application submitted successfully!</div>');
-          $('body').append(successMsg);
-          setTimeout(function() {
-            successMsg.fadeOut(function() { $(this).remove(); });
-            url = "{% url 'loans:clientloanaccount' 1 %}".replace(1, data.loanaccount_id);
-            window.location = url;
-          }, 2000);
+          url = "{% url 'loans:clientloanaccount' 1 %}".replace(1, data.loanaccount_id);
+          showSuccessMessage("Loan Application submitted successfully!", url);
         }
       }, "json");
     });

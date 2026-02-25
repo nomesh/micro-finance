@@ -99,7 +99,7 @@
           alert(data.error_message);
         }
         else {
-          alert("Group savings account status changed sucessfully");
+          showSuccessMessage("Group savings account status changed successfully!", window.location.href);
           window.location = '.'
         }
       }, "json");
